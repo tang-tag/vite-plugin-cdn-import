@@ -71,7 +71,8 @@ function renderUrl(
   return url
     .replace(/\{name\}/g, data.name)
     .replace(/\{version\}/g, data.version)
-    .replace(/\{path\}/g, path);
+    .replace(/\{path\}/g, path)
+    .replace(/\{compress\}/g, !isDev ? '.min' : '');
 }
 
 async function getModuleInfo(module: Module, prodUrl: string) {
