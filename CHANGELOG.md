@@ -1,6 +1,10 @@
+- 1.0.2 2025年12月03日
+    -　修改支持 monorepo 架构
+    - Vite 7.x 支持
+
 - 1.0.1 (Apr 26, 2024)
     - Deprecate `autoComplete`, pass the package name directly in options.modules instead.
-    
+
 - 1.0.0 (Apr 25, 2024)
     - Update all dependencies
     - Vite 5.x support
