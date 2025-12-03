@@ -11,6 +11,8 @@ export interface Module {
     alias?: string[]
     css?: string | string[]
     prodUrl?: string
+    /** 自定义版本，默认在包中自行搜索版本号 */
+    version?: string
 }
 
 export interface Options {

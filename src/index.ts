@@ -35,7 +35,7 @@ async function getModuleVersion(name: string): Promise<string> {
       if (fs.existsSync(pkgFile)) {
         const pkgJson = JSON.parse(fs.readFileSync(pkgFile, "utf8"));
         version = pkgJson.version;
-        return false;
+        return true;
       }
     }
   });
@@ -77,7 +77,7 @@ function renderUrl(
 async function getModuleInfo(module: Module, prodUrl: string) {
   prodUrl = module.prodUrl || prodUrl;
   let v = module;
-  const version = await getModuleVersion(v.name);
+  const version = module.version || await getModuleVersion(v.name);
   let pathList: string[] = [];
   if (!Array.isArray(v.path)) {
     pathList.push(v.path);
@@ -114,6 +114,9 @@ async function getModuleInfo(module: Module, prodUrl: string) {
         }),
       );
 
+  isDev && console.log(
+    `[vite-plugin-cdn-import]: ${v.name}(${version})`,
+  );
   return {
     ...v,
     version,
